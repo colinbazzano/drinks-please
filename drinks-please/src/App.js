@@ -1,20 +1,30 @@
 import React from "react";
-import hero from "./assets/images/herococktail.jpg";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// local imports
+import Home from "./components/Home";
+import Drinks from "./components/Drinks";
+import About from "./components/About";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <strong>Drinks please!</strong> An easy way to make your new favorite
-        drink.
-      </header>
-      <hero />
-      <img
-        style={{ width: "30%", height: "30%" }}
-        src={hero}
-        alt="old fashioned cocktail"
-      />
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/drinks">
+            <Drinks />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
