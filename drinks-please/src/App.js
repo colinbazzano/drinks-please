@@ -1,13 +1,30 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// local imports
+import Home from "./components/Home";
+import Drinks from "./components/Drinks";
+import About from "./components/About";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <strong>Drinks please!</strong> An easy way to make your new favorite
-        drink.
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/drinks">
+            <Drinks />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
